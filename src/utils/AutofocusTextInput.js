@@ -1,22 +1,16 @@
-import React, { Component } from 'react'
+import React, { useRef, useEffect } from 'react'
 import ChooseOptions from '../components/ChooseOptions'
 
+const AutoFocusTextInput = () => {
+  const textInputRef = useRef(null)
 
-class AutoFocusTextInput extends React.Component {
-  constructor(props) {
-    super(props)
-    this.textInput = React.createRef()
-  }
+  useEffect(() => {
+    if (textInputRef.current?.focusTextInput) {
+      textInputRef.current.focusTextInput()
+    }
+  }, [])
 
-  componentDidMount() {
-    this.textInput.current.focusTextInput()
-  }
-
-  render() {
-    return (
-      <ChooseOptions ref={this.textInput} />
-    )
-  }
+  return <ChooseOptions ref={textInputRef} />
 }
 
 export default AutoFocusTextInput

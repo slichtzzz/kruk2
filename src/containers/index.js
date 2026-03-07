@@ -1,17 +1,17 @@
-import Syllable from './Syllable'
-import Bucvica from './Bucvica'
-import HeaderButtons from './HeaderButtons'
-import Syllables from './Syllables'
-import Symbol from './Symbol'
-import Text from './Text'
-import Attention from './Attention'
+import Syllable from './Syllable/index.jsx'
+import Bucvica from './Bucvica/index.jsx'
+import HeaderButtons from './HeaderButtons/index.jsx'
+//import Syllables from './Syllables'
+import Symbol from './Symbol/index.jsx'
+import Text from './Text/index.jsx'
+import Attention from './Attention/index.jsx'
 import Help from './Help'
 
 export {
   Syllable,
   Bucvica,
   HeaderButtons,
-  Syllables,
+  //Syllables,
   Symbol,
   Text,
   Attention,

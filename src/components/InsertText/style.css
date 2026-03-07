@@ -16,3 +16,11 @@
 .toggleShowPagination{
     margin-top: 20px;
 }
+
+.custom-control-input {
+	margin-right: 10px;
+}
+
+.field {
+    margin-bottom: 3px;
+}

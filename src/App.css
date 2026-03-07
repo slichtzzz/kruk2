@@ -1,3 +1,10 @@
+/*#root {
+  width: 100%;       /* На всю ширину */
+  margin: 0;         
+  padding: 0;        
+  min-height: 100vh; /* На всю высоту */
+}*/
+
 .App {
   text-align: center;
 }

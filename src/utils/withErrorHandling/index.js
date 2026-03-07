@@ -1,8 +1,8 @@
 import React from 'react'
 
-const withErrorHandling = WrappedComponent => ({ showError, children }) => {
+const withErrorHandling = WrappedComponent => ({ showError, children, ...props }) => {
   return (
-    <WrappedComponent>
+    <WrappedComponent {...props}>
       {showError && <div className="error-message">Oops! Something went wrong!</div>}
       {children}
     </WrappedComponent>
@@ -11,7 +11,7 @@ const withErrorHandling = WrappedComponent => ({ showError, children }) => {
 
 const DivWithErrorHandling = withErrorHandling(({ children }) => <div>{children}</div>)
 
-export default {
+export {
   withErrorHandling,
   DivWithErrorHandling,
 }

@@ -1,3 +1,11 @@
 .paperStyle {
     width: 350px;
 }
+
+.form-control {
+    width: 150px !important;
+}
+
+.form-select {
+    width: 150px !important;
+}

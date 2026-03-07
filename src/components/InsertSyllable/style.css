@@ -3,7 +3,6 @@
     src: url(../../res/fonts/NewDamaskin.ttf); /* Путь к файлу со шрифтом */
    }
 
-
 .inputForm {
     display: flex;
     flex-direction: column;
@@ -28,6 +27,7 @@
     width: 242px !important;
     padding-top: 5px;
     margin-top: 5px;
+	height: calc(2.25rem + 2px);
 }
 
 .perevodka {

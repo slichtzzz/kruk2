@@ -2,25 +2,29 @@
     font-family: Grebnev;
     src: url(../../res/fonts/GrebnevUCS.ttf);
   }
-
+/*Обнаружился баг со спиннером. Допилил стили.*/
 .loading-screen {
     height: 400px;
-    position: relative;
-    background-color: gray; /* for demonstration */
+    position: relative; /* Спиннер выравнивается по блоку */
+    background-color: white;
+    display: flex;       /* Гибкий контейнер */
+    flex-direction: column; /* Надпись помещаем над спиннером */
+    align-items: center;    /* Центрируем по горизонтали */
+    justify-content: center; /* Центрируем по вертикали */
+    text-align: center;
 }
 
 .loading-gif {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -50px 0px 0px -50px;
+    position: relative; /*Относительное позиционирование вместо абсолютного*/
+    margin-top: 20px; /* Отступ от h1 */
+    width: 50px;
+    height: 50px;
 }
 
 .title {
-    margin-top: 50px;
-    font-size: 60pt!important;
+    margin: 0; /* Убрал отступы для более чистого центрирования */
+    font-size: 60pt !important;
     font-family: Grebnev;
-    
 }
 
 .title::first-letter {

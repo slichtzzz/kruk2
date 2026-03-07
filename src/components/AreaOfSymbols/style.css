@@ -93,6 +93,9 @@
 .paragraph-remove-button {
     position: absolute;
     bottom: 7px;
+    left: 47%;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
     background-color: #fffc;
     display: none;
@@ -115,7 +118,7 @@
 }
 
 .paragraphWrapper:hover .paragraph-remove-button {
-    display: inline-block;
+    display: flex;
 }
 
 .paragraph {
@@ -123,6 +126,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     border: solid 1px #fff;
+    margin-bottom: -1px; /*Fix bug with white line of inactive paragraph stepping over the blue one of the active paragraph */
 }
 
 .activeParagraph {
@@ -145,7 +149,7 @@
     position: relative;
     width: 210mm;
     height: 297mm;
-    overflow: hidden;
+    overflow: visible; /*Testing to push Delete page button out of the page. In case of problem put back "hidden"*/
     page-break-before: avoid;
     page-break-after: avoid;
     background: white;
@@ -161,7 +165,7 @@
 }
 
 .paperMargin:hover .page-remove-button {
-    display: inline-block;
+    display: inline-block !important;
 }
 
 .activePage {
@@ -172,9 +176,9 @@
 .page-remove-button {
     position: absolute;
     left: 40.5%;
-    top: 10px;
+    top: -15px;
     cursor: pointer;
-    display: none;
+    display: none !important;
     font-weight: 400;
     text-align: center;
     white-space: nowrap;
@@ -189,7 +193,7 @@
     -o-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    z-index: 1040;
+    z-index: 1040; /*To be adjusted*/
 }
 
 .droppable {

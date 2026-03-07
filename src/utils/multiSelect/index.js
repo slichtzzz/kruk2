@@ -1,20 +1,35 @@
+import React from 'react'
 import Select from 'react-select'
-import React, { Component } from 'react'
-
+import { Controller } from 'react-hook-form'
 import './style.css'
 
-const multiSelect = (field) => {
+/**
+ * Компонент MultiSelect для react-hook-form
+ * @param {object} props
+ * @param {string} props.name - имя поля формы
+ * @param {object[]} props.options - массив опций { value, label }
+ * @param {object} props.control - control из useForm
+ * @param {function} [props.onChangeExtra] - дополнительная функция при изменении значения
+ */
+const MultiSelectRH = ({ name, options, control, onChangeExtra }) => {
   return (
-    <div>
-      <Select
-        name={field.name}
-        {...field.input}
-        className="field"
-        multi={true}
-        options={field.options}
-      />
-    </div>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field }) => (
+        <Select
+          {...field}
+          options={options}
+          isMulti
+          className="field"
+          onChange={(selected) => {
+            field.onChange(selected)       // обновляем форму
+            if (onChangeExtra) onChangeExtra(selected) // вызываем доп. обработчик
+          }}
+        />
+      )}
+    />
   )
 }
 
-export default multiSelect
+export default MultiSelectRH
