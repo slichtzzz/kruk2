@@ -5,28 +5,30 @@ import { Container, Col, Input, Label, Form, FormGroup } from 'reactstrap'
 import { updatePaperStyle } from '../../slices/paperStyleSlice'
 import { customFonts } from '../../res'
 import { Select } from '../../utils'
+import { SwitchBase } from '../'
+import { SwitchNotes } from '../'
+import { SwitchCanvas } from '../'
+import { SwitchPlay } from '../'
+import { SwitchLegacyMode } from '../'
 import './style.css'
 
 const PaperStyle = () => {
   const dispatch = useDispatch()
   const paperStyle = useSelector(state => state.paperStyle)
   const { control } = useForm({
-    defaultValues: paperStyle,
+    values: paperStyle,
   })
   const fontOptions = customFonts.map((font, index) => ({
     value: index,
     label: font
 	}));
 
-  // Обновляем store только при изменении конкретного поля
   const handleChange = (fieldName, value) => {
-	console.log("Получено: ", fieldName, value);
     dispatch(updatePaperStyle({ ...paperStyle, [fieldName]: value }))
   }
 
   return (
     <Container className="paperStyle text-left">
-      <h4>Настройки</h4>
       <Form>
         <FormGroup row>
           <Col>
@@ -68,9 +70,8 @@ const PaperStyle = () => {
               )}
             />
           </Col>
-        </FormGroup>
-
-      <FormGroup row>
+           </FormGroup>
+          <FormGroup row>
         <Col>
           <Label for="marginTop">Отступ текста от знамени</Label>
           <Controller
@@ -109,9 +110,8 @@ const PaperStyle = () => {
 			  )}
 		   />
         </Col>
-      </FormGroup>
-
-        <FormGroup row>
+          </FormGroup>
+          <FormGroup row>
           <Col>
             <Label>Шрифт слогов</Label>
             <Controller
@@ -124,7 +124,6 @@ const PaperStyle = () => {
                   onChange={e => {
 					const value = e.target.value
                     field.onChange(value)
-                    console.log(field.value)
                     handleChange('fontOfTextInSyllables', value)
                   }}
                 />
@@ -151,6 +150,13 @@ const PaperStyle = () => {
               )}
             />
           </Col>
+        </FormGroup>
+        <FormGroup row>
+        <SwitchBase />
+        <SwitchNotes />
+        <SwitchCanvas />
+        <SwitchPlay />
+        <SwitchLegacyMode />
         </FormGroup>
       </Form>
     </Container>

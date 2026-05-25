@@ -6,8 +6,6 @@ import { toggleModalDeletePage, removePage } from '../../slices/paperSlice'
 
 export const RemovePageModal = () => {
   const dispatch = useDispatch()
-
-  // Получаем данные из слайса paper
   const showModalDeletePage = useSelector(state => state.paper.showModalDeletePage)
   const indexOfDeletingPage = useSelector(state => state.paper.indexOfDeletingPage)
 
@@ -38,10 +36,6 @@ export const RemovePageModal = () => {
       </ModalFooter>
     </Modal>
   )
-}
-
-RemovePageModal.propTypes = {
-  // Пропсы больше не нужны, всё берется из useSelector
 }
 
 export default RemovePageModal

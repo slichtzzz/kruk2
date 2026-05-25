@@ -1,31 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setSymbols } from '../../slices/symbolSlice.js';
-import { getDataFromServer } from '../../utils';
+import { useDispatch } from 'react-redux';
+import { fetchZnamenSymbols, fetchDemestvoSymbols, fetchSources, setSymbols } from '../../slices/symbolSlice.js';
 import Paper from '../Paper';
 import './style.css';
 
 export const PaperWrapper = () => {
-	const [loading, setLoading] = useState(true);
-	const dispatch = useDispatch();
-	useEffect(() => {
-		getDataFromServer('https://domestikos.ru/base/kruk/all').then((data) => {
-			dispatch(setSymbols(data));
-			setLoading(false);
-			})
-		},[dispatch])
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
-    return loading ? (
-      <>
-<div className="loading-screen">
-    <h1 className="title">Доме1стикъ</h1>
-    <div
+  useEffect(() => {
+  Promise.all([
+    dispatch(fetchZnamenSymbols()).unwrap(),
+    dispatch(fetchDemestvoSymbols()).unwrap(),
+    dispatch(fetchSources()).unwrap(),
+  ])
+    .then(([znamenData, demestvoData]) => {
+      dispatch(setSymbols(znamenData));
+      
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error("Ошибка при загрузке баз данных:", err);
+    });
+}, [dispatch]);
+
+
+  return loading ? (
+    <div className="loading-screen">
+      <h1 className="title">Доме́стикъ</h1>
+      <div
         className="spinner spinner--steps icon-spinner loading-gif"
         aria-hidden="true"
-    />
-</div>
-      </>
-     ) : ( <Paper /> )
-  };
+      />
+    </div>
+  ) : (
+    <Paper />
+  );
+};
 
-export default PaperWrapper
+export default PaperWrapper;

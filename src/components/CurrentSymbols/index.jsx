@@ -7,7 +7,6 @@ import './style.css'
 const CurrentSymbols = () => {
   const dispatch = useDispatch()
   const currentSymbols = useSelector(state => state.symbols.currentSymbols)
-
   const handleAddSyllable = syllable => {
     dispatch(addSyllable(syllable))
   }
@@ -19,12 +18,15 @@ const CurrentSymbols = () => {
         <p>Подходящих знамен нет</p>
       ) : (
         <div className="currentSymbolsArea">
-          {currentSymbols.map(({ value, name, pitch }, index) => (
+          {currentSymbols.map(({ _id, value, name, pitch, zf, notes }, index) => (
             <Symbol
               key={index}
+              _id={_id}
               value={value}
               name={name}
               pitch={pitch}
+              zf={zf}
+              notes={notes}
               addSyllable={handleAddSyllable}
             />
           ))}

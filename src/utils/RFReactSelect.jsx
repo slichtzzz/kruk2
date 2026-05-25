@@ -10,6 +10,7 @@ export const RFReactSelect = ({
   options,
   className,
   id,
+  ...rest
 }) => {
   return (
     <Select
@@ -20,22 +21,11 @@ export const RFReactSelect = ({
       onChange={onChange}
       onBlur={onBlur}
       className={className}
+      {...rest}
     />
   )
 }
-/*
-RFReactSelect.propTypes = {
-  input: PropTypes.shape({
-    name: PropTypes.string,
-    value: PropTypes.any,
-    onChange: PropTypes.func,
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-  }).isRequired,
-  options: PropTypes.array.isRequired,
-  className: PropTypes.string,
-}
-*/
+
 export const RFReactMultiSelect = ({
   name,
   value,
@@ -60,15 +50,4 @@ export const RFReactMultiSelect = ({
     />
   )
 }
-/*
-RFReactMultiSelect.propTypes = {
-  input: PropTypes.shape({
-    name: PropTypes.string,
-    value: PropTypes.any,
-    onChange: PropTypes.func,
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-  }).isRequired,
-  options: PropTypes.array.isRequired,
-  className: PropTypes.string,
-}*/
+

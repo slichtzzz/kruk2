@@ -10,7 +10,6 @@ export const RangeForm = () => {
   })
 
   const onSubmit = (data) => {
-    console.log('Form data:', data)
   }
 
   return (

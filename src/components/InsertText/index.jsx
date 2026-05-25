@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   changeParagraph,
   addSyllable,
   toggleShowPagination,
 } from '../../slices/paperSlice'
+import { unicodeSlavonic } from '../../utils'
 import './style.css'
 
 export const InsertText = () => {
@@ -14,10 +15,25 @@ export const InsertText = () => {
   const currentPageNum = useSelector((state) => state.paper.currentPageNum)
   const currentParagraphNum = useSelector((state) => state.paper.currentParagraphNum)
   const showPagination = useSelector((state) => state.paper.showPagination)
+  const ucsFont = useSelector((state) => state.paperStyle.fontOfTextInSyllables)
+
 
   const [textInput, setTextInput] = useState('')
   const [bucvicaInput, setBucvicaInput] = useState('')
-//TODO: merge functions
+  const textInputRef = React.useRef(null);
+  
+const handleTextChange = (e) => {
+  const rawValue = e.target.value;
+  const selectionStart = e.target.selectionStart;
+  setTextInput(rawValue);
+  requestAnimationFrame(() => {
+    if (textInputRef.current) {
+      textInputRef.current.setSelectionRange(selectionStart, selectionStart);
+    }
+  });
+};
+
+
   const addText = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault()
@@ -54,34 +70,47 @@ export const InsertText = () => {
   return (
     <div className="insert-text text-left">
       <h4 className="text-left">Вставка текста</h4>
-
 	<div style={{ display: 'flex' }}>
-      <div className="field field-insert-text">
-        <label htmlFor="Name">Вставить текст</label>
-        <input
-          label="Текст"
-          name="text"
-          className="form-control ucs-text"
-          value={textInput}
-          onChange={(e) => setTextInput(e.target.value)}
-          onKeyPress={addText}
-        />
-      </div>
-
-      <button type="button" className="btn btn-primary" style={{ width: '80px', marginLeft: '30px' }} onClick={newParagraph}>
-        Новый абзац
-      </button>
-	</div>
-      <div className="field field-insert-bucvica">
+      <div className="field">
         <label htmlFor="Name">Вставить буквицу</label>
         <input
           label="Буквица"
           name="bucvica"
           className="form-control"
+          style={{ padding: '5px'}}
           value={bucvicaInput}
           onChange={(e) => setBucvicaInput(e.target.value)}
           onKeyPress={addBucvica}
         />
+      </div>
+
+      <button type="button" className="btn btn-primary" style={{ width: '300px', height: '50px' , marginLeft: '3px' }} onClick={newParagraph}>
+        Новый абзац
+      </button>
+	</div>
+
+      <div className="field field-insert-text">
+        <label htmlFor="Name">Вставить текст</label>
+        <input
+          label="Текст"
+          name="text"
+          className="form-control"
+          onChange={handleTextChange}
+          innerRef={textInputRef}
+          onKeyPress={addText}
+          style={{ 
+            fontSize: '1.2rem',
+            minHeight: '45px'
+          }}
+        />
+		{textInput && (
+		  <div className="preview-label" style={{ marginTop: '5px', width: '290px' }}>
+		    <span 
+		      style={{ fontFamily: ucsFont, fontSize: '1.7rem' }}
+		      dangerouslySetInnerHTML={{ __html: unicodeSlavonic(textInput) }} 
+		    />
+		  </div>
+		)}
       </div>
 
       <div className="toggleShowPagination custom-control custom-checkbox">

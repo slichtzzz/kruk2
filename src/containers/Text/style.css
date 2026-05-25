@@ -1,40 +1,35 @@
-@font-face {
-    font-family: GrebnevUCS;
-    src: url(../../res/fonts/GrebnevUCS.ttf)
-}
-
 .text-line {
     text-align: left;
     font-size: 24pt;
-    font-family: GrebnevUCS;
-    color:red;
+    font-family: 'Triodion';
     width: 100%;
     position: relative;
     line-height: 52pt;
 }
 
 .text-line:hover .text-remove-button {
-    display: inline-block;
+    display: inline-flex;
 }
 
 .text-remove-button {
-    cursor: pointer;
-    background-color: #fffc;
     display: none;
-    color: #fff;
+    vertical-align: middle; 
+    margin-left: 10px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
     background-color: #dc354599;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    border: 1px solid transparent;
-    /* padding: .375rem .75rem; */
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    -o-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.text-remove-button:hover {
+    background-color: #c0392b;
+    color: #fff;
 }

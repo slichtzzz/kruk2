@@ -1,0 +1,34 @@
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { hideModal } from '../../slices/paperSlice'
+import { InsertSyllable, CurrentSymbols } from '../'
+import './style.css'
+
+const EditSyllable = () => {
+  const dispatch = useDispatch()
+  const showModalEdit = useSelector(state => state.paper.showModalEdit)
+
+  const handleClose = () => dispatch(hideModal())
+
+  return (
+    <Modal isOpen={showModalEdit} size="lg" contentClassName="custom-modal-height">
+      <ModalHeader toggle={handleClose}>Редактирование</ModalHeader>
+      <ModalBody>
+        <div className="controls">
+         <div className="control-block">
+          <InsertSyllable />
+         </div>
+         <div className="control-block-last">
+           <CurrentSymbols />
+         </div>
+       </div>
+      </ModalBody>
+      <ModalFooter>
+        <Button color="secondary" onClick={handleClose}>Отмена</Button>
+      </ModalFooter>
+    </Modal>
+  )
+}
+
+export default EditSyllable

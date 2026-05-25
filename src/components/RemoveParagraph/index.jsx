@@ -5,8 +5,6 @@ import { deleteParagraph, hideModalDeleteParagraph } from '../../slices/paperSli
 
 export const RemoveParagraph = () => {
   const dispatch = useDispatch()
-
-  // Получаем данные из слайса paper
   const showModalDeleteParagraph = useSelector(
     state => state.paper.showModalDeleteParagraph
   )

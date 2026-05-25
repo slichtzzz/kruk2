@@ -2,40 +2,37 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveAs } from 'file-saver'
 import { getDate } from '../../utils'
-import { setSyllables } from '../../slices/paperSlice'
+import { setSyllables, showUploadToStoreModal, showDownloadFromStoreModal } from '../../slices/paperSlice'
 import { updatePaperStyle } from '../../slices/paperStyleSlice'
 import { Help } from '../index'
+import {  } from '../../components/DownloadFromStoreModal'
 import './style.css'
 
 export const HeaderButtons = () => {
   const dispatch = useDispatch()
   const paper = useSelector(state => state.paper)
   const paperStyle = useSelector(state => state.paperStyle)
-
   const [showModalHelp, setShowModalHelp] = useState(false)
   const [redMarksHidden, setRedMarksHidden] = useState(false)
-
-  // 🔹 Модалка помощи
   const toggleModalHelp = () => setShowModalHelp(prev => !prev)
 
-  // 🔹 Удаление/показ красных пометок
-  const handleRemoveRedMarks = () => {
-    const existingStyle = document.getElementById('hide-red-marks-style')
-    if (redMarksHidden) {
-      if (existingStyle) existingStyle.remove()
-      setRedMarksHidden(false)
-    } else {
-      if (!existingStyle) {
-        const style = document.createElement('style')
-        style.id = 'hide-red-marks-style'
-        style.textContent = '.red { color: #ffffff !important; }'
-        document.head.appendChild(style)
-      }
-      setRedMarksHidden(true)
-    }
-  }
+  //const handleRemoveRedMarks = () => {
+    //const existingStyle = document.getElementById('hide-red-marks-style')
+    //if (redMarksHidden) {
+      //if (existingStyle) existingStyle.remove()
+      //setRedMarksHidden(false)
+    //} else {
+      //if (!existingStyle) {
+        //const style = document.createElement('style')
+        //style.id = 'hide-red-marks-style'
+        //style.textContent = '.red { color: #ffffff !important; }'
+        //document.head.appendChild(style)
+      //}
+      //setRedMarksHidden(true)
+    //}
+  //}
 
-  // 🔹 Импорт JSON файла
+  // Импорт JSON файла
   const handleFile = (e) => {
     const file = e.target.files[0]
     if (!file) return
@@ -55,10 +52,11 @@ export const HeaderButtons = () => {
     reader.readAsText(file)
   }
 
-  // 🔹 Экспорт в JSON
+  // Экспорт в JSON
   const downloadFile = () => {
     const {
       symbolFontSize,
+      noteFontSize,
       textFontSize,
       marginTop,
       marginBottom,
@@ -70,6 +68,7 @@ export const HeaderButtons = () => {
       syllables: paper.syllables,
       settings: {
         symbolFontSize,
+        noteFontSize,
         textFontSize,
         marginTop,
         marginBottom,
@@ -82,10 +81,30 @@ export const HeaderButtons = () => {
     saveAs(blob, `domestikos-${getDate()}.json`)
   }
 
+const handleDBDownload = () => {
+	dispatch(showDownloadFromStoreModal(true));
+}
+
+const handleDBUpload = () => {
+	dispatch(showUploadToStoreModal(true));
+}
+
   return (
     <>
       <Help toggle={toggleModalHelp} showModalHelp={showModalHelp} />
       <div className="import-export">
+        <button
+          className="btn btn-light button-dbdown"
+          onClick={handleDBDownload}
+        >
+          Выгрузка из базы
+        </button>
+                <button
+          className="btn btn-light button-dbup"
+          onClick={handleDBUpload}
+        >
+          Загрузка в базу
+        </button>
         <div id="hidden-export-container" style={{ display: 'none' }} />
         <div className="file btn-light btn">
           Загрузить из файла
@@ -102,13 +121,13 @@ export const HeaderButtons = () => {
         >
           Экспорт в файл
         </button>
-        <button
+        {/*<button
           className="btn btn-light button-download"
           style={{ marginLeft: '10px' }}
           onClick={handleRemoveRedMarks}
         >
           {redMarksHidden ? 'С пометами' : 'Без помет'}
-        </button>
+        </button>*/}
         <button
           className="btn button-help btn-primary button-help"
           onClick={toggleModalHelp}

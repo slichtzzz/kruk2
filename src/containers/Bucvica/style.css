@@ -1,38 +1,39 @@
 .bucvica {
-    font-family: Afonit;
+    font-family: 'Pomorsky';
     color:red;
-    margin-top: -30px;
     text-transform: uppercase;
     position: relative;
-    font-size: 72pt;
+    font-size: 168pt;
+    line-height: 1;
 }
 
 .bucvica:hover .bucvica-button {
-    display: inline-block;
+    display: flex;
 }
 
 .bucvica-button {
+    /* Позиционирование */
+    position: absolute;
+    right: -10px;
+    top: 25px;
+    z-index: 100;
+    width: 25px;
+    height: 25px;
+    line-height: 1 !important; 
+    font-size: 14px !important;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
     cursor: pointer;
-    background-color: #fffc;
-    position: absolute;
-    position: absolute;
-    right:0;
-    top:30px;
-    display: none;
-    color: #fff;
     background-color: #dc354599;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    border: 1px solid transparent;
-    /* padding: .375rem .75rem; */
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    -o-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.bucvica-button:hover {
+    background-color: #c0392b;
 }

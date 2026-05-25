@@ -1,3 +1,13 @@
 .insertComposition {
     width: 350px;
 }
+
+.zftext {
+  font-family: 'Triodion Unicode';
+  text-align: center;
+  }
+  
+.neume {
+  font-family: 'Mezenets Unicode';
+  text-align: center;
+  }

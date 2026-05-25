@@ -1,11 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import './style.css'
 
-const Symbol = ({ value, pitch, name, addSyllable }) => {
+const Symbol = ({ _id, value, pitch, zf, notes, name, addSyllable }) => {
   const handleAdd = () => {
     const syllableForInsert = {
+	  _id,
       value,
+      name,
+      zf,
+      notes,
       text: '-',
       type: 'KRUK',
     }
@@ -35,13 +38,6 @@ const Symbol = ({ value, pitch, name, addSyllable }) => {
       </button>
     </div>
   )
-}
-
-Symbol.propTypes = {
-  value: PropTypes.string.isRequired,
-  pitch: PropTypes.string,
-  name: PropTypes.string,
-  addSyllable: PropTypes.func.isRequired,
 }
 
 export default Symbol

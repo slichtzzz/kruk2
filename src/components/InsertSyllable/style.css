@@ -1,6 +1,6 @@
 @font-face {
-    font-family: NewDamaskin; /* Имя шрифта */
-    src: url(../../res/fonts/NewDamaskin.ttf); /* Путь к файлу со шрифтом */
+    font-family: 'Triodion Unicode'; /* Имя шрифта */
+    src: url(../../res/fonts/TriodionUnicode.ttf); /* Путь к файлу со шрифтом */
    }
 
 .inputForm {
@@ -8,6 +8,7 @@
     flex-direction: column;
     width: 340px;
     margin-left: 40px;
+    position: relative;
 }
 
 .field {
@@ -19,15 +20,8 @@
 .input {
     width: 250px;
     padding: 5px;
-}
-
-.inputTextUCS {
-    font-family: NewDamaskin;
-    font-size: 24pt !important;
-    width: 242px !important;
-    padding-top: 5px;
-    margin-top: 5px;
-	height: calc(2.25rem + 2px);
+    position: relative;
+    z-index: 101; 
 }
 
 .perevodka {
@@ -62,4 +56,52 @@
 .error > .alert {
     width: 240px;
     margin-left: 5px;
+}
+
+/* Базовый стиль поля */
+.field {
+  display: inline-grid;
+  grid-template-columns: 90px auto;
+  justify-items: start;
+  padding: 10px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+  position: relative; /* Важно для z-index */
+  z-index: 1; /* Обычный слой для всех полей */
+}
+
+/* Стиль активного поля */
+.field.active-step {
+  opacity: 1;
+  border-left: 4px solid #007bff; /* Синяя полоса слева */
+  background-color: rgba(0, 123, 255, 0.05); /* Легкий фон */
+  transform: translateX(5px); /* Легкий сдвиг вправо */
+  z-index: 100;
+}
+
+/* Стиль пройденного поля */
+.field.completed-step {
+  opacity: 0.9;
+  border-left: 4px solid #28a745; /* Зеленая полоса (готово) */
+}
+.field:focus-within {
+  z-index: 100;
+  opacity: 1;
+}
+
+/* Для самой обертки списка внутри поля, если это react-select */
+.input > div {
+  z-index: 101;
+}
+
+.input-name input, 
+.input-option input, 
+.input-pitch input {
+  caret-color: transparent !important;
+}
+
+/* Возвращаем курсор в текстовом поле */
+.inputText {
+  caret-color: auto !important;
 }

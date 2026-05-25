@@ -14,6 +14,18 @@ import PaperStyle from './PaperStyle/index.jsx'
 import RemoveParagraphButton from './RemoveParagraphButton/index.jsx'
 import RemoveParagraph from './RemoveParagraph/index.jsx'
 import RemovePageModal from './RemovePageModal/index.jsx'
+import BottomSettingsPanel from './BottomSettingsPanel/index.jsx'
+import HelpComponent from './HelpComponent/index.jsx'
+import HelpSection from './HelpSection/index.jsx'
+import SwitchBase from './SwitchBase/index.jsx'
+import SwitchNotes from './SwitchNotes/index.jsx'
+import SwitchCanvas from './SwitchCanvas/index.jsx'
+import SelectSourcesContainer from './SelectSourcesContainer/index.jsx'
+import SwitchPlay from './SwitchPlay/index.jsx'
+import InsertSyllableLegacyMode from './InsertSyllableLegacyMode/index.jsx'
+import SwitchLegacyMode from './SwitchLegacyMode/index.jsx'
+import DownloadFromStoreModal from './DownloadFromStoreModal/index.jsx'
+import UploadToStoreModal from './UploadToStoreModal/index.jsx'
 
 export {
   Paper,
@@ -32,4 +44,16 @@ export {
   RemoveParagraphButton,
   RemoveParagraph,
   RemovePageModal,
+  BottomSettingsPanel,
+  HelpComponent,
+  HelpSection,
+  SwitchBase,
+  SwitchNotes,
+  SwitchCanvas,
+  SelectSourcesContainer,
+  SwitchPlay,
+  InsertSyllableLegacyMode,
+  SwitchLegacyMode,
+  DownloadFromStoreModal,
+  UploadToStoreModal
 }

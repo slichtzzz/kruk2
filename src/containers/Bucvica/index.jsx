@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import PropTypes from 'prop-types'
 import './style.css'
 
 const Bucvica = React.memo(({ form, text, index, pageIndex, removeSyllablebyIndex, changePage }) => {
@@ -15,7 +14,7 @@ const Bucvica = React.memo(({ form, text, index, pageIndex, removeSyllablebyInde
   }, [changePage, removeSyllablebyIndex, index, pageIndex])
 
   const fontSize = sizeOfBucvica ? `${sizeOfBucvica}pt` : 'inherit'
-  const height = sizeOfBucvica ? sizeOfBucvica * 0.9 : 'auto'
+  const height = sizeOfBucvica ? sizeOfBucvica : 'auto'
 
   return (
     <div className="bucvica" style={{ fontSize, height }}>
@@ -31,14 +30,5 @@ const Bucvica = React.memo(({ form, text, index, pageIndex, removeSyllablebyInde
     </div>
   )
 })
-
-Bucvica.propTypes = {
-  form: PropTypes.object,
-  text: PropTypes.string,
-  pageIndex: PropTypes.number,
-  index: PropTypes.number,
-  removeSyllablebyIndex: PropTypes.func,
-  changePage: PropTypes.func,
-}
 
 export default Bucvica

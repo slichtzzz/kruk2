@@ -2,6 +2,14 @@
     margin-right: 20px;
 }
 
+.button-dbup {
+	margin-right: 20px;
+}
+
+.button-dbdown {
+	margin-right: 20px;
+}
+
   .import-export {
       display: flex;
   }

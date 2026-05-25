@@ -1,9 +1,11 @@
 import React from 'react'
-import { Bucvica, Text, Syllable } from '../containers'
+import { Bucvica, Text, Syllable, Break } from '../containers'
+import { parseHightsForBravura } from '../utils/musicMap.js';
 
 const getPaperItem = (
   form,
   value,
+  notes,
   text,
   type,
   paragraphIndex,
@@ -12,11 +14,13 @@ const getPaperItem = (
   changePage,
   removeSyllablebyIndex,
 ) => {
+  const processedNotes = parseHightsForBravura(notes);
   switch (type) {
     case 'KRUK': {
       return (
         <Syllable
           value={value}
+          notesData={processedNotes}
           text={text}
           key={parseInt(index, 10)}
           paragraphIndex={paragraphIndex}
@@ -48,11 +52,20 @@ const getPaperItem = (
         />
       )
     }
-    case 'BREAK': {
-      return <hr className="break" />
-    }
+case 'BREAK': {
+  return (
+    <Break
+      index={parseInt(index, 10)}
+      pageIndex={pageIndex}
+      paragraphIndex={paragraphIndex}
+      removeSyllablebyIndex={removeSyllablebyIndex}
+      changePage={changePage}
+    />
+  )
+}
     default:
       return null
   }
 }
+
 export default getPaperItem

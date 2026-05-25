@@ -13,32 +13,10 @@
     z-index: 1050;
 }
 
-.helper {
-    width: 3000px;
-}
-
-.errorNoParagraph {
-    margin-left: 40px;
-    margin-top: 10px;
-    width: 337px;
-    text-align: left
-}
-
-.hr {
-    margin-top: 100px;
-}
-
 .download-file {
     position: absolute;
     bottom: 20px;
 
-}
-
-.removeLast {
-    display: inline-grid;
-    grid-template-columns: 94px 241px;
-    justify-items: start;
-    margin-left: 40px;
 }
 
 .control-block {
@@ -55,3 +33,4 @@
 .form-control {
 height: calc(2.25rem + 2px);
 }
+

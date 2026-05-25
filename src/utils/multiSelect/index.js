@@ -23,8 +23,8 @@ const MultiSelectRH = ({ name, options, control, onChangeExtra }) => {
           isMulti
           className="field"
           onChange={(selected) => {
-            field.onChange(selected)       // обновляем форму
-            if (onChangeExtra) onChangeExtra(selected) // вызываем доп. обработчик
+            field.onChange(selected)
+            if (onChangeExtra) onChangeExtra(selected)
           }}
         />
       )}

@@ -9,8 +9,8 @@ const slavonicNumbers = {
   6: 'ѕ',
   7: 'з',
   8: 'и',
-  9: 'f',
-  10: 'i',
+  9: 'ѳ',
+  10: 'і',
   20: 'к',
   30: 'л',
   40: 'м',
@@ -20,12 +20,12 @@ const slavonicNumbers = {
 const getPageNum = (arabicNum) => {
   // если до 10 просто добавляем титлу
   if (arabicNum <= 10) {
-    return `${slavonicNumbers[arabicNum]}7`
+    return `${slavonicNumbers[arabicNum]}҃`
   }
 
   // если от 11 до 19 то беерм остаток от деления на 10, примисываем славянскую 10 и титлу
   if (arabicNum > 10 && arabicNum < 20) {
-    return `${slavonicNumbers[arabicNum % 10]}i7`
+    return `${slavonicNumbers[arabicNum % 10]}i҃`
   }
 
   // если больше 20 то если число не встречается в масссиве слав чисел (там только целые),
@@ -36,7 +36,7 @@ const getPageNum = (arabicNum) => {
         slavonicNumbers[arabicNum % 10]
       }7`
     }
-    return `${slavonicNumbers[arabicNum]}7`
+    return `${slavonicNumbers[arabicNum]}҃`
   }
   return ''
 }

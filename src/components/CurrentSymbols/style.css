@@ -9,20 +9,9 @@
 .currentSymbols {
     width: 300px;
     height: 300px;
-    position: relative; /* Относительное позиционирование */
+    position: relative;
 }
 
-/* .currentSymbols::after {
-    content: "";
-    text-align: right;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 1.2em;
-    pointer-events: none;
-    background: white;
-}
-*/
 .currentSymbolsArea::before {
     content: "";
     text-align: right;

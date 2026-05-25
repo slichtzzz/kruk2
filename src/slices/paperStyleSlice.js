@@ -3,11 +3,12 @@ import { customFonts } from '../res'
 
 const initialState = {
   symbolFontSize: 50,
-  textFontSize: 20,
-  marginTop: 10,
+  noteFontSize: 30,
+  textFontSize: 25,
+  marginTop: 1,
   marginBottom: 14,
   fontOfTextInSyllables: customFonts[0],
-  sizeOfBucvica: 90,
+  sizeOfBucvica: 120,
   sizeOfPage: 900,
 }
 

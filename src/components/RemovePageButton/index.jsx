@@ -9,8 +9,8 @@ export const RemovePageButton = ({ pageIndex }) => {
 
   const handleRemovePage = (e) => {
     e.stopPropagation()
-    dispatch(changePage(pageIndex)) //Set PageIndex as paper.currentPage
-    dispatch(toggleModalDeletePage(pageIndex)) //Toggle value of paper.showModalDeletePage
+    dispatch(changePage(pageIndex))
+    dispatch(toggleModalDeletePage(pageIndex))
   }
 
   return (

@@ -1,0 +1,75 @@
+.hotkey-side-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1050;
+  height: 100vh;
+  display: flex;
+}
+
+.hotkey-side-nav-tabs {
+  width: 45px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  background: #f8f9fa;
+}
+
+.hotkey-side-tab-link {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  padding: 25px 10px !important;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #6c757d;
+  border-right: 3px solid transparent;
+}
+
+.hotkey-side-tab-link.active {
+  background-color: #fff;
+  border-right: 3px solid #0d6efd;
+  color: #0d6efd;
+  font-weight: bold;
+}
+
+.hotkey-side-content {
+  width: 550px; 
+  height: 100%;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.05);
+  background: #fff;
+  padding: 20px;
+}
+
+.hotkey-side-container table {
+    width: 100%;
+}
+
+.hotkey-side-twocolumn-body {
+    display: block;
+    column-count: 2;
+    column-gap: 30px;
+    width: 100%;
+}
+
+.hotkey-side-row {
+    display: flex;
+    justify-content: space-between;
+    break-inside: avoid;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 2px;
+}
+
+.hotkey-side-cell-name {
+    font-size: 0.85rem;
+    flex: 1;
+    border: none !important;
+    padding: 4px 8px !important;
+}
+
+.hotkey-side-cell-key {
+    border: none !important;
+    padding: 4px 8px !important;
+}

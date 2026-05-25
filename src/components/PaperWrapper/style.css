@@ -1,30 +1,31 @@
 @font-face {
     font-family: Grebnev;
-    src: url(../../res/fonts/GrebnevUCS.ttf);
+    src: url(../../res/fonts/TriodionUnicode.ttf);
   }
-/*Обнаружился баг со спиннером. Допилил стили.*/
+
 .loading-screen {
     height: 400px;
-    position: relative; /* Спиннер выравнивается по блоку */
+    position: relative;
     background-color: white;
-    display: flex;       /* Гибкий контейнер */
-    flex-direction: column; /* Надпись помещаем над спиннером */
-    align-items: center;    /* Центрируем по горизонтали */
-    justify-content: center; /* Центрируем по вертикали */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
+
 .loading-gif {
-    position: relative; /*Относительное позиционирование вместо абсолютного*/
-    margin-top: 20px; /* Отступ от h1 */
+    position: relative;
+    margin-top: 20px;
     width: 50px;
     height: 50px;
 }
 
 .title {
-    margin: 0; /* Убрал отступы для более чистого центрирования */
+    margin: 50px;
     font-size: 60pt !important;
-    font-family: Grebnev;
+    font-family: 'Triodion Unicode';
 }
 
 .title::first-letter {
